@@ -1,43 +1,22 @@
 ﻿<Window x:Class="ADAccountCreationTool.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ADAccountCreationTool"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Создание учетной записи" Height="400" Width="600">
     <Grid Margin="10">
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="Имя:" />
-            <TextBox x:Name="FirstNameBox" TextChanged="UpdateLoginPreview"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <TextBlock Text="Отчество:" Margin="0,10,0,0"/>
-            <TextBox x:Name="MiddleNameBox" TextChanged="UpdateLoginPreview"/>
-
-            <TextBlock Text="Фамилия:" Margin="0,10,0,0"/>
-            <TextBox x:Name="LastNameBox" TextChanged="UpdateLoginPreview"/>
-
-            <TextBlock Text="Номер отдела:" Margin="0,10,0,0"/>
-            <TextBox x:Name="DepartmentNumberBox" TextChanged="UpdateLoginPreview"/>
-
-            <TextBlock Text="Формируемый логин:" Margin="0,10,0,0"/>
-            <TextBox x:Name="LoginBox" IsReadOnly="True" />
-
-            <TextBlock Text="Пароль:" Margin="0,10,0,0"/>
-            <PasswordBox x:Name="PasswordBox" />
-
-            <TextBlock Text="Контейнер AD (OU):" Margin="0,10,0,0"/>
-            <ComboBox x:Name="OuComboBox" Width="400" />
-
-            <TextBlock Text="Путь сценария входа:" Margin="0,10,0,0"/>
-            <TextBox x:Name="ScriptPathBox" Text="login.bat" />
-
-            <TextBlock Text="Группа:" Margin="0,10,0,0"/>
-            <TextBox x:Name="GroupBox" Text="Employees" />
-
-            <Button Content="Создать пользователя" Margin="0,15,0,0" Click="CreateButton_Click" />
-
-            <TextBlock x:Name="ResultText" TextWrapping="Wrap" Margin="0,10,0,0" Foreground="DarkGreen"/>
+        <StackPanel Grid.Row="0" Margin="10" VerticalAlignment="Top">
+            <TextBox x:Name="FirstNameBox" PlaceholderText="Имя"/>
+            <TextBox x:Name="MiddleNameBox" PlaceholderText="Отчество"/>
+            <TextBox x:Name="LastNameBox" PlaceholderText="Фамилия"/>
+            <TextBox x:Name="DepartmentBox" PlaceholderText="Номер отдела"/>
+            <ComboBox x:Name="OuComboBox" />
+            <ComboBox x:Name="GroupComboBox" />
+            <TextBox x:Name="ScriptPathBox" PlaceholderText="Путь сценария входа"/>
+            <TextBlock x:Name="LoginPreview" FontWeight="Bold" />
+            <Button Content="Создать" Click="Create_Click"/>
         </StackPanel>
     </Grid>
 </Window>
